@@ -1,0 +1,48 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/7.4.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'dev' ]
+2 info using npm@4.1.2
+3 info using node@v7.4.0
+4 verbose run-script [ 'predev', 'dev', 'postdev' ]
+5 info lifecycle bootstrap-layout-scrollable@1.1.0~predev: bootstrap-layout-scrollable@1.1.0
+6 silly lifecycle bootstrap-layout-scrollable@1.1.0~predev: no script for predev, continuing
+7 info lifecycle bootstrap-layout-scrollable@1.1.0~dev: bootstrap-layout-scrollable@1.1.0
+8 verbose lifecycle bootstrap-layout-scrollable@1.1.0~dev: unsafe-perm in lifecycle true
+9 verbose lifecycle bootstrap-layout-scrollable@1.1.0~dev: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/svil4ok/Sites/hr/resources/assets/vendor/bootstrap-layout-scrollable/node_modules/.bin:/usr/local/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/Users/svil4ok/.composer/vendor/bin:/Users/svil4ok/.rvm/bin
+10 verbose lifecycle bootstrap-layout-scrollable@1.1.0~dev: CWD: /Users/svil4ok/Sites/hr/resources/assets/vendor/bootstrap-layout-scrollable
+11 silly lifecycle bootstrap-layout-scrollable@1.1.0~dev: Args: [ '-c',
+11 silly lifecycle   'webpack --config src/build/webpack.config.dev.js --progress --watch' ]
+12 info lifecycle bootstrap-layout-scrollable@1.1.0~dev: Failed to exec dev script
+13 verbose stack Error: bootstrap-layout-scrollable@1.1.0 dev: `webpack --config src/build/webpack.config.dev.js --progress --watch`
+13 verbose stack spawn ENOENT
+13 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:33:16)
+13 verbose stack     at emitTwo (events.js:106:13)
+13 verbose stack     at ChildProcess.emit (events.js:191:7)
+13 verbose stack     at maybeClose (internal/child_process.js:885:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+14 verbose pkgid bootstrap-layout-scrollable@1.1.0
+15 verbose cwd /Users/svil4ok/Sites/hr/resources/assets/vendor/bootstrap-layout-scrollable
+16 error Darwin 16.3.0
+17 error argv "/usr/local/Cellar/node/7.4.0/bin/node" "/usr/local/bin/npm" "run" "dev"
+18 error node v7.4.0
+19 error npm  v4.1.2
+20 error file sh
+21 error code ELIFECYCLE
+22 error errno ENOENT
+23 error syscall spawn
+24 error bootstrap-layout-scrollable@1.1.0 dev: `webpack --config src/build/webpack.config.dev.js --progress --watch`
+24 error spawn ENOENT
+25 error Failed at the bootstrap-layout-scrollable@1.1.0 dev script 'webpack --config src/build/webpack.config.dev.js --progress --watch'.
+25 error Make sure you have the latest version of node.js and npm installed.
+25 error If you do, this is most likely a problem with the bootstrap-layout-scrollable package,
+25 error not with npm itself.
+25 error Tell the author that this fails on your system:
+25 error     webpack --config src/build/webpack.config.dev.js --progress --watch
+25 error You can get information on how to open an issue for this project with:
+25 error     npm bugs bootstrap-layout-scrollable
+25 error Or if that isn't available, you can get their info via:
+25 error     npm owner ls bootstrap-layout-scrollable
+25 error There is likely additional logging output above.
+26 verbose exit [ 1, true ]

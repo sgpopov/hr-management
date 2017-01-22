@@ -13,5 +13,14 @@
     "laravel-mix": "^0.4.0",
     "lodash": "^4.16.2",
     "vue": "^2.0.1"
+  },
+  "dependencies": {
+    "adminplus": "^1.0.0-alpha.12",
+    "bootstrap": "^4.0.0-alpha.2",
+    "bootstrap-layout": "^1.0.0-alpha.10",
+    "bootstrap-layout-scrollable": "^1.1.0",
+    "sass-md-colors": "^1.0.0",
+    "simplebar": "^2.0.3",
+    "tether": "^1.4.0"
   }
 }
