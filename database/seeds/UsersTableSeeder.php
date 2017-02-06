@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
         $user = new User();
         $user->name = 'Svilen Popov';
         $user->email = 'demo@example.com';
-        $user->password = bcrypt('admin');
+        $user->password = bcrypt('svil4ok');
         $user->save();
         $user->assignRole($roleAdmin);
 

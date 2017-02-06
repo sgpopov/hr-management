@@ -1,18 +1,14 @@
 <?php
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
+Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.request.post');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.reset.post');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/', 'HomeController@index')->middleware('auth');
+Route::get('/', 'HomeController@index')->middleware('auth')->name('home');
 
 Route::group(['prefix' => 'users', 'middleware' => 'auth'], function () {
     Route::get('/', 'UsersController@index')->name('users.index');
