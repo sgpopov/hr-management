@@ -24,3 +24,12 @@ Route::group(['prefix' => 'users', 'middleware' => 'auth'], function () {
 
     Route::delete('/{id}', 'UsersController@destroy')->name('users.remove');
 });
+
+Route::group(['prefix' => 'roles', 'middleware' => 'auth'], function () {
+    Route::get('/', 'RolesController@index')->name('roles.index');
+    Route::get('/create', 'RolesController@create')->name('roles.create');
+    Route::post('/', 'RolesController@store')->name('roles.store');
+    Route::get('/{role}/edit', 'RolesController@edit')->name('roles.edit');
+    Route::patch('/{role}', 'RolesController@update')->name('roles.update');
+    Route::delete('/{id}', 'RolesController@destroy')->name('roles.remove');
+});

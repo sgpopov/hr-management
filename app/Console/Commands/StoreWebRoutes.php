@@ -94,7 +94,7 @@ class StoreWebRoutes extends Command
             return;
         }
 
-        DB::table('web_routes')
+        DB::table('routes')
             ->whereNotIn('uri', array_column($routes, 'uri'))
             ->delete();
     }
@@ -118,7 +118,7 @@ class StoreWebRoutes extends Command
             return;
         }
 
-        DB::table('web_routes')->insert($routes);
+        DB::table('routes')->insert($routes);
     }
 
     /**
@@ -130,7 +130,7 @@ class StoreWebRoutes extends Command
      */
     protected function getDistinctNewRoutes($routes) : array
     {
-        $existentRoutes = DB::table('web_routes')
+        $existentRoutes = DB::table('routes')
             ->select('methods', 'uri')
             ->get();
 

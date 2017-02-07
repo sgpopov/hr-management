@@ -4,6 +4,10 @@
             <li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('/users') }}">Users</a>
             </li>
+
+            <li class="nav-item {{ Request::is('roles*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('/roles') }}">Roles</a>
+            </li>
         </ul>
 
         <ul class="nav navbar-nav pull-xs-right hidden-md-down">

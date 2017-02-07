@@ -13,7 +13,7 @@ class CreateWebRoutesTable extends Migration
      */
     public function up()
     {
-        Schema::create('web_routes', function (Blueprint $table) {
+        Schema::create('routes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('methods');
             $table->string('uri');
@@ -31,6 +31,6 @@ class CreateWebRoutesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('web_routes');
+        Schema::dropIfExists('routes');
     }
 }

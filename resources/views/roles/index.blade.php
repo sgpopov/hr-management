@@ -3,7 +3,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li class="active">Users</li>
+        <li class="active">Roles</li>
     </ol>
 @endsection
 
@@ -12,11 +12,11 @@
         <div class="card-header bg-white">
             <div class="media">
                 <div class="media-body">
-                    <h4 class="card-title">Users</h4>
-                    <p class="card-subtitle">{{ $users->count() }} total</p>
+                    <h4 class="card-title">Roles</h4>
+                    <p class="card-subtitle">{{ $roles->count() }} total</p>
                 </div>
                 <div class="media-right media-middle">
-                    <a href="{{ route('users.create') }}" class="btn btn-rounded-deep btn-success-outline">
+                    <a href="{{ route('roles.create') }}" class="btn btn-rounded-deep btn-success-outline">
                         <i class="material-icons">add</i>
                         <span class="icon-text">Add</span>
                     </a>
@@ -25,31 +25,24 @@
         </div>
 
         <ul class="list-group list-group-fit">
-            @foreach($users as $user)
+            @foreach($roles as $role)
             <li class="list-group-item">
                 <div class="media m-b-0">
-                    <div class="media-left media-middle">
-                        <a href="{{ route('users.edit', $user->id) }}">
-                            <img src="{{ asset($user->getPicture()) }}" alt="{{ $user->name }}" width="40" class="img-circle" />
-                        </a>
-                    </div>
                     <div class="media-body media-middle">
                         <p class="m-b-0">
-                            <a href="{{ route('users.edit', $user->id) }}">{{ $user->name }}</a><br />
+                            <a href="{{ route('roles.edit', $role->id) }}">
+                                {{ $role->name }}
+                            </a>
+                            <br />
                         </p>
 
                         <p class="m-b-0">
-                            <small>{{ $user->email }}</small>
+                            <small>{{ $role->description }}</small>
                         </p>
 
                         <small class="text-muted-light">
-                            Last active {{ $user->created_at }}
-                        </small>
-
-                        <small class="text-muted">&bull;</small>
-
-                        <small class="text-muted-light">
-                            Registered at {{ $user->created_at }}
+                            {{ $role->users->count() }} users &bull;
+                            {{ $role->routes->count() }} routes
                         </small>
 
                         <div class="card-button-wrapper">

@@ -94,6 +94,7 @@ class User extends Authenticatable
     {
         return $this->roles()->attach($role);
     }
+
     /**
      * Remove a role from a user
      *
