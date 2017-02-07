@@ -106,6 +106,17 @@ class User extends Authenticatable
         return $this->roles()->detach($role);
     }
 
+    public function hasAccessToRoute($method, $uri)
+    {
+        $roles = $this->roles()
+            ->whereHas('routes', function ($routes) use ($method, $uri) {
+                return $routes->where('methods', '=', $method)->where('uri', '=', $uri);
+            })
+            ->get();
+
+        return $roles->count() > 0;
+    }
+
     /**
      * @return string
      */

@@ -10,7 +10,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 
 Route::get('/', 'HomeController@index')->middleware('auth')->name('home');
 
-Route::group(['prefix' => 'users', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'users', 'middleware' => ['auth', 'has-access-rights']], function () {
     Route::get('/', 'UsersController@index')->name('users.index');
 
     Route::get('/create', 'UsersController@create')->name('users.create');
@@ -25,7 +25,7 @@ Route::group(['prefix' => 'users', 'middleware' => 'auth'], function () {
     Route::delete('/{id}', 'UsersController@destroy')->name('users.remove');
 });
 
-Route::group(['prefix' => 'roles', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'roles', 'middleware' => ['auth', 'has-access-rights']], function () {
     Route::get('/', 'RolesController@index')->name('roles.index');
     Route::get('/create', 'RolesController@create')->name('roles.create');
     Route::post('/', 'RolesController@store')->name('roles.store');
