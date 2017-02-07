@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UsersRequest;
 use App\User;
 use App\Role;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
@@ -17,7 +16,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::all()->sortBy('name', SORT_ASC);
 
         return view('users.index', compact('users'));
     }
@@ -29,7 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = Role::all();
+        $roles = Role::all()->sortBy('name', SORT_ASC);
 
         return view('users.create', compact('roles'));
     }
@@ -72,7 +71,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::all();
+        $roles = Role::all()->sortBy('name', SORT_ASC);
 
         return view('users.edit', compact('user', 'roles'));
     }

@@ -15,7 +15,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::all()->sortBy('name', SORT_ASC);
 
         return view('roles.index', compact('roles'));
     }
@@ -27,7 +27,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        $routes = Route::all();
+        $routes = Route::all()->sortBy('uri', SORT_ASC);
 
         return view('roles.create', compact('routes'));
     }
@@ -58,7 +58,7 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-        $routes = Route::all();
+        $routes = Route::all()->sortBy('uri', SORT_ASC);
 
         return view('roles.edit', compact('role', 'routes'));
     }
