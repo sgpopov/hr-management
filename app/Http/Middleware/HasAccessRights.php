@@ -16,6 +16,11 @@ class HasAccessRights
      */
     public function handle($request, Closure $next)
     {
+        // Admin are GODs
+        if ($request->user()->hasRole('admin')) {
+            return $next($request);
+        }
+
         $method = implode('|', $request->route()->methods());
         $uri = $request->route()->uri();
 
