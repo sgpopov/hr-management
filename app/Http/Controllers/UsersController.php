@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsersRequest;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
@@ -9,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
+    /**
+     * List users.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $users = User::all();
@@ -16,6 +22,11 @@ class UsersController extends Controller
         return view('users.index', compact('users'));
     }
 
+    /**
+     * Render create user form.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         $roles = Role::all();
@@ -23,25 +34,15 @@ class UsersController extends Controller
         return view('users.create', compact('roles'));
     }
 
-    public function edit(User $user)
+    /**
+     * Create new user.
+     *
+     * @param UsersRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(UsersRequest $request)
     {
-        $roles = Role::all();
-
-        return view('users.edit', compact('user', 'roles'));
-    }
-
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|unique:users',
-            'role_id' => 'required',
-            'role_id.*' => 'exists:roles,id',
-            'picture' => 'sometimes|mimes:jpeg,png'
-        ], [
-            'role_id.required' => 'The role field is required.'
-        ]);
-
         // ToDo: Upload user picture
         if ($request->hasFile('picture')) {
             $extension = $request->picture->extension();
@@ -59,33 +60,33 @@ class UsersController extends Controller
 
         User::create($request->all());
 
-        return redirect()->action('UsersController@index');
+        return redirect()->route('users.index')->with('status', 'User created!');
+    }
+
+    /**
+     * Render edit user form.
+     *
+     * @param User $user
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(User $user)
+    {
+        $roles = Role::all();
+
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
      * Update user.
      *
-     * @param Request $request
+     * @param UsersRequest $request
      * @param User $user
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, User $user)
+    public function update(UsersRequest $request, User $user)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|unique:users,email,' . $user->id,
-            'role_id' => 'sometimes|required',
-            'role_id.*' => 'exists:roles,id',
-            'picture' => 'sometimes|mimes:jpeg,png',
-            'old_password' => 'required_with:new_password|oldpassword',
-            'new_password' => 'required_with:old_password,confirm_password|min:6',
-            'confirm_password' => 'required_with:new_password|same:new_password'
-        ], [
-            'role_id.required' => 'The role field is required.',
-            'old_password.oldpassword' => 'Ivalid password.'
-        ]);
-
         // ToDo: Delete old user picture if requested
 
         // ToDo: Upload user picture
@@ -103,13 +104,25 @@ class UsersController extends Controller
         return redirect()->back()->with('status', 'Profile updated!');
     }
 
+    /**
+     * Remove user.
+     *
+     * @param User $user
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->back()->with('status', 'User deleted.');
+        return redirect()->route('users.index')->with('status', 'User deleted.');
     }
 
+    /**
+     * Generate random user password.
+     *
+     * @return string
+     */
     protected function generatePassword()
     {
         return str_random(15);
