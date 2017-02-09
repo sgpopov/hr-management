@@ -1,27 +1,27 @@
 @import 'functions/strip-unit';
 
 body {
-	position: relative;
+  position: relative;
 }
 
 .page-heading {
-	padding: $grid-gutter-width 0;
+  padding: $grid-gutter-width 0;
 }
 
-.content-wrapper, 
+.content-wrapper,
 .content-wrapper > .container-fluid,
 div.page-heading {
-	position: relative;
-	overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 a.text-muted:hover {
-	color: $brand-primary;
-	text-decoration: none;
+  color: $brand-primary;
+  text-decoration: none;
 }
 
 blockquote {
-	border-left: 2px solid #efefef;
-	padding-left: 10px;
-	font-size: .9rem;
+  border-left: 2px solid #efefef;
+  padding-left: 10px;
+  font-size: .9rem;
 }
