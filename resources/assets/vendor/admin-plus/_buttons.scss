@@ -1,7 +1,7 @@
 // BUTTON SIZE
 .btn-xs {
   // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-y-sm/2, $btn-padding-x-sm/2, $font-size-xs, $btn-border-radius-sm);
+  @include button-size($btn-padding-y-sm/2, $btn-padding-x-sm/2, $font-size-xs, $line-height/2, $btn-border-radius-sm);
 }
 
 // BUTTON VARIANT
