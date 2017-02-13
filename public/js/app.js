@@ -11194,9 +11194,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_sweetalert___default.a);
 
 Vue.prototype.$http = axios;
 
-// Vue.component('users-list', require('./components/users/users-list.js'));
 Vue.component('users-list', __webpack_require__(33));
-// Vue.component('users-list-item', require('./components/users/users-list-item.vue'));
+Vue.component('roles-list', __webpack_require__(44));
 
 var app = new Vue({
     el: '#app'
@@ -38095,6 +38094,218 @@ module.exports = function(module) {
 __webpack_require__(10);
 module.exports = __webpack_require__(11);
 
+
+/***/ }),
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    props: ['list'],
+
+    data: function data() {
+        return {
+            roles: [],
+            alertSettings: {
+                confrim: {
+                    type: 'warning',
+                    title: 'Are you sure?',
+                    text: 'You will not be able to recover this role!',
+                    showCancelButton: true,
+                    showLoaderOnConfirm: true,
+                    confirmButtonText: 'Yes, delete it',
+                    confirmButtonColor: '#F27474',
+                    cancelButtonText: 'No, keep it'
+                },
+                onSuccess: {
+                    title: 'Removed',
+                    type: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                },
+                onError: {},
+                onCancel: {
+                    title: 'Cancelled',
+                    type: 'error',
+                    showConfirmButton: false,
+                    timer: 1500
+                }
+            }
+        };
+    },
+    mounted: function mounted() {
+        var roles = _.values(this.list);
+
+        roles = _.sortBy(roles, ['name']);
+
+        this.roles = roles;
+    },
+
+
+    methods: {
+        confirmDelete: function confirmDelete(role) {
+            var _this = this;
+
+            this.alertSettings.confrim['preConfirm'] = function () {
+                return this.$http.delete('/roles/' + role.id);
+            }.bind(this);
+
+            this.$swal(this.alertSettings.confrim).then(function () {
+                _this.removeUser(role);
+            }, function (dismissAction) {
+                if (dismissAction === 'cancel') {
+                    _this.$swal(_this.alertSettings.onCancel).catch(_this.$swal.noop);
+                }
+            });
+        },
+        removeUser: function removeUser(role) {
+            var index = _.indexOf(this.roles, role);
+
+            this.roles.splice(index, 1);
+            this.$swal(this.alertSettings.onSuccess).catch(this.$swal.noop);
+        }
+    }
+};
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(34)(
+  /* script */
+  __webpack_require__(43),
+  /* template */
+  __webpack_require__(45),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\xampp\\htdocs\\hr-management\\resources\\assets\\js\\components\\roles\\list.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] list.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-52b8eb1e", Component.options)
+  } else {
+    hotAPI.reload("data-v-52b8eb1e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', {
+    staticClass: "list-group list-group-fit"
+  }, _vm._l((_vm.roles), function(role) {
+    return _c('li', {
+      staticClass: "list-group-item"
+    }, [_c('div', {
+      staticClass: "media m-b-0"
+    }, [_c('div', {
+      staticClass: "media-body media-left"
+    }, [_c('p', {
+      staticClass: "m-b-0"
+    }, [_c('a', {
+      attrs: {
+        "href": '/roles/' + role.id + '/edit'
+      }
+    }, [_vm._v(_vm._s(role.name))])]), _vm._v(" "), _c('p', {
+      staticClass: "m-b-0"
+    }, [_c('small', [_vm._v(_vm._s(role.description))])]), _vm._v(" "), _c('small', {
+      staticClass: "text-muted-light"
+    }, [_vm._v("\n                    " + _vm._s(role.users.length) + " users •\n                    " + _vm._s(role.routes.length) + " routes\n                ")])]), _vm._v(" "), _c('div', {
+      staticClass: "media-right"
+    }, [_c('div', {
+      staticClass: "card-button-wrapper"
+    }, [_c('div', {
+      staticClass: "dropdown"
+    }, [_vm._m(0, true), _vm._v(" "), _c('div', {
+      staticClass: "dropdown-menu dropdown-menu-right"
+    }, [_c('a', {
+      staticClass: "dropdown-item",
+      attrs: {
+        "href": "javascript:"
+      },
+      on: {
+        "click": function($event) {
+          _vm.confirmDelete(role)
+        }
+      }
+    }, [_vm._v("Remove")])])])])])])])
+  }))
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    staticClass: "card-button",
+    attrs: {
+      "href": "javascript:",
+      "data-toggle": "dropdown",
+      "aria-haspopup": "true",
+      "aria-expanded": "false"
+    }
+  }, [_c('i', {
+    staticClass: "material-icons"
+  }, [_vm._v("more_vert")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-52b8eb1e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

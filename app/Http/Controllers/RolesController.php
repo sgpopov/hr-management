@@ -15,7 +15,9 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::all()->sortBy('name', SORT_ASC);
+        $roles = Role::with(['users', 'routes'])
+            ->get()
+            ->sortBy('name', SORT_ASC);
 
         return view('roles.index', compact('roles'));
     }
@@ -63,6 +65,14 @@ class RolesController extends Controller
         return view('roles.edit', compact('role', 'routes'));
     }
 
+    /**
+     * Update role details.
+     *
+     * @param StoreRoleRequest $request
+     * @param Role $role
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(StoreRoleRequest $request, Role $role)
     {
         $role->update($request->all());
@@ -71,5 +81,19 @@ class RolesController extends Controller
         return redirect()
             ->route('roles.index')
             ->with('status', 'Profile updated!');
+    }
+
+    /**
+     * Remove role.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function destroy($id)
+    {
+        Role::destroy($id);
+
+        return response('', 204);
     }
 }
