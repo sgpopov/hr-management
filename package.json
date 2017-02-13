@@ -19,6 +19,7 @@
     "bootstrap-layout-scrollable": "^1.1.0",
     "sass-md-colors": "^1.0.0",
     "simplebar": "^2.0.3",
-    "tether": "^1.4.0"
+    "tether": "^1.4.0",
+    "vue-sweetalert": "^0.1.16"
   }
 }

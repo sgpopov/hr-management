@@ -106,15 +106,15 @@ class UsersController extends Controller
     /**
      * Remove user.
      *
-     * @param User $user
+     * @param int $id
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
+        User::destroy($id);
 
-        return redirect()->route('users.index')->with('status', 'User deleted.');
+        return response('', 204);
     }
 
     /**

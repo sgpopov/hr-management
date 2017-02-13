@@ -33,7 +33,6 @@
                             <a href="{{ route('roles.edit', $role->id) }}">
                                 {{ $role->name }}
                             </a>
-                            <br />
                         </p>
 
                         <p class="m-b-0">
