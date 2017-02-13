@@ -22,7 +22,7 @@
     @include('includes.nav')
     @include('includes.sidebar')
 
-    <div class="layout-content" data-scrollable>
+    <div class="layout-content" id="app" data-scrollable>
         <div class="container-fluid">
             @yield('breadcrumb')
             @yield('content')

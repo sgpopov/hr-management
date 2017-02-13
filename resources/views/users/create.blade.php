@@ -13,7 +13,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-block">
-                    <form action="{{ route('users.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group row {{ $errors->has('name') ? 'has-danger' : '' }}">
