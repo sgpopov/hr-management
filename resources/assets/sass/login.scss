@@ -6,6 +6,7 @@
 html {
   height: 100%;
 }
+
 .layout {
   min-height: 100%;
   font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -117,13 +118,15 @@ header {
   background: #00CC66;
   width: 100%;
   outline: none;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
+  letter-spacing: 0.5px;
   color: #eeeeee;
   border-bottom: solid 3px #43A047;
   border-radius: 3px;
   cursor: pointer;
   text-shadow: #43A047 0 1px 0;
+  text-transform: uppercase;
 }
 
 .label {
