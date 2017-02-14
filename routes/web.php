@@ -33,3 +33,27 @@ Route::group(['prefix' => 'roles', 'middleware' => ['auth', 'has-access-rights']
     Route::patch('/{role}', 'RolesController@update')->name('roles.update');
     Route::delete('/{id}', 'RolesController@destroy')->name('roles.remove');
 });
+
+Route::group(['prefix' => 'departments', 'middleware' => ['auth', 'has-access-rights']], function () {
+    Route::get('/', 'DepartmentsController@index')->name('departments.index');
+    Route::get('/create', 'DepartmentsController@create')->name('departments.create');
+    Route::post('/', 'DepartmentsController@store')->name('departments.store');
+    Route::get('/{department}/edit', 'DepartmentsController@edit')->name('departments.edit');
+    Route::patch('/{department}', 'DepartmentsController@update')->name('departments.update');
+});
+
+Route::group(['prefix' => 'teams', 'middleware' => ['auth', 'has-access-rights']], function () {
+    Route::get('/', 'TeamsController@index')->name('teams.index');
+    Route::get('/create', 'TeamsController@create')->name('teams.create');
+    Route::post('/', 'TeamsController@store')->name('teams.store');
+    Route::get('/{team}/edit', 'TeamsController@edit')->name('teams.edit');
+    Route::patch('/{team}', 'TeamsController@update')->name('teams.update');
+});
+
+Route::group(['prefix' => 'employees', 'middleware' => ['auth', 'has-access-rights']], function () {
+    Route::get('/', 'EmployeesController@index')->name('employees.index');
+    Route::get('/create', 'EmployeesController@create')->name('employees.create');
+    Route::post('/', 'EmployeesController@store')->name('employees.store');
+    Route::get('/{employee}/edit', 'EmployeesController@edit')->name('employees.edit');
+    Route::patch('/{employee}', 'EmployeesController@update')->name('employees.update');
+});
