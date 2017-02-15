@@ -88,6 +88,7 @@ class EmployeesController extends Controller
     public function update(EmployeeRequest $request, Employee $employee)
     {
         $employee->update($request->all());
+        $employee->passport()->update($request->get('passport'));
 
         return redirect()
             ->route('employees.index')

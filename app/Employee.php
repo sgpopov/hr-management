@@ -32,4 +32,12 @@ class Employee extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function passport()
+    {
+        return $this->hasOne(EmployeeId::class);
+    }
 }

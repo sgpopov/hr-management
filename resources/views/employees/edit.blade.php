@@ -9,13 +9,5 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-block">
-                    @include('employees.partials.add-edit-form')
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('employees.partials.add-edit-form')
 @endsection
