@@ -26,6 +26,10 @@
             </div>
         </div>
 
+        <div class="card-block">
+            @include('employees.partials.filters-form')
+        </div>
+
         <ul class="list-group list-group-fit m-b-0">
             @foreach($employees as $employee)
                 <li class="list-group-item">
@@ -33,6 +37,9 @@
                         <div class="media-body media-middle">
                             <div class="m-b-1">
                                 <a href="{{ route('employees.edit', $employee->id) }}">{{ $employee->fullname }}</a>
+                            </div>
+                            <div class="m-b-1">
+                                {{ $employee->email }}
                             </div>
                             <span class="text-muted">
                                 Employee since: <b>{{ $employee->hired_on }}</b> &bull;
@@ -50,7 +57,7 @@
                 Showing {{ $employees->firstItem() }} to {{ $employees->lastItem() }} of {{ $employees->total() }} employees.
             </span>
 
-            {{ $employees->links() }}
+            {{ $employees->appends(request()->query())->links() }}
         </div>
     </div>
 @endsection

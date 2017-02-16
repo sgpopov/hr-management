@@ -2,12 +2,14 @@
 
 namespace App;
 
+use App\Helpers\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Employee extends Model
 {
     use SoftDeletes;
+    use Filterable;
 
     /**
      * The attributes that should be mutated to dates.

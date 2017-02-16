@@ -11252,6 +11252,7 @@ Vue.component('datetime-picker', __webpack_require__(60));
 Vue.component('users-list', __webpack_require__(36));
 Vue.component('roles-list', __webpack_require__(35));
 Vue.component('passport-dates', __webpack_require__(57));
+Vue.component('employees-list-filters', __webpack_require__(64));
 
 var app = new Vue({
     el: '#app'
@@ -38560,6 +38561,212 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-39cb6b2c", module.exports)
+  }
+}
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    props: ['departments', 'department', 'teams', 'team'],
+
+    methods: {
+        onFilterApplied: function onFilterApplied() {
+            var queryParams = {};
+
+            if (this.department) {
+                queryParams['department'] = this.department;
+            }
+
+            if (this.team) {
+                queryParams['team'] = this.team;
+            }
+
+            window.location.search = this.generateQueryString(queryParams);
+        },
+        generateQueryString: function generateQueryString(data) {
+            var ret = [];
+
+            for (var d in data) {
+                ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+            }
+
+            return ret.join('&');
+        }
+    }
+};
+
+/***/ }),
+/* 63 */,
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(9)(
+  /* script */
+  __webpack_require__(62),
+  /* template */
+  __webpack_require__(65),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\xampp\\htdocs\\hr-management\\resources\\assets\\js\\components\\employees\\list-filters.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] list-filters.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-84e49af8", Component.options)
+  } else {
+    hotAPI.reload("data-v-84e49af8", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('form', {
+    staticClass: "filter form-inline",
+    attrs: {
+      "action": "/employees"
+    }
+  }, [_c('div', {
+    staticClass: "filter-options"
+  }, [_c('div', {
+    staticClass: "form-group m-r-1"
+  }, [_c('label', {
+    attrs: {
+      "for": "filter-department"
+    }
+  }, [_vm._v("Department:")]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.department),
+      expression: "department"
+    }],
+    staticClass: "c-select",
+    attrs: {
+      "name": "department",
+      "id": "filter-department"
+    },
+    on: {
+      "change": [function($event) {
+        _vm.department = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        })[0]
+      }, _vm.onFilterApplied]
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": ""
+    }
+  }, [_vm._v("Any")]), _vm._v(" "), _vm._l((_vm.departments), function(department) {
+    return _c('option', {
+      domProps: {
+        "value": department.id
+      }
+    }, [_vm._v(_vm._s(department.name))])
+  })], 2)]), _vm._v(" "), _c('div', {
+    staticClass: "form-group m-r-1"
+  }, [_c('label', {
+    attrs: {
+      "for": "filter-team"
+    }
+  }, [_vm._v("Team:")]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.team),
+      expression: "team"
+    }],
+    staticClass: "c-select",
+    attrs: {
+      "name": "team",
+      "id": "filter-team"
+    },
+    on: {
+      "change": [function($event) {
+        _vm.team = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        })[0]
+      }, _vm.onFilterApplied]
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": ""
+    }
+  }, [_vm._v("Any")]), _vm._v(" "), _vm._l((_vm.teams), function(team) {
+    return _c('option', {
+      domProps: {
+        "value": team.id
+      }
+    }, [_vm._v(_vm._s(team.name))])
+  })], 2)]), _vm._v(" "), _vm._m(0)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "form-group pull-right"
+  }, [_c('a', {
+    staticClass: "btn btn-primary btn-rounded",
+    attrs: {
+      "href": "/employees"
+    }
+  }, [_vm._v("\n                Reset\n            ")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-84e49af8", module.exports)
   }
 }
 

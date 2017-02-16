@@ -24,5 +24,6 @@ class HelperServiceProvider extends ServiceProvider
     public function register()
     {
         require_once __DIR__ . '/../Helpers/getHttpMethodColor.php';
+        require_once __DIR__ . '/../Helpers/isFilterApplied.php';
     }
 }
