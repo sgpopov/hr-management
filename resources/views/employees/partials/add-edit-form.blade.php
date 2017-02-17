@@ -209,7 +209,7 @@
             <div class="media">
                 <div class="media-left">
                     <div class="icon-block rounded">
-                        @if($employee->picture)
+                        @if(isset($employee->picture) && !empty($employee->picture))
                             <a href="{{ asset('storage/employees/pictures/' . $employee->picture) }}" target="_blank">
                                 <img src="{{ asset('storage/employees/pictures/thumbs/' . $employee->picture) }}" alt="{{ $employee->fullname }}">
                             </a>
