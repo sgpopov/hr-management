@@ -13,6 +13,7 @@
     <link type="text/css" href="{{ asset('vendor/simplebar.css') }}" rel="stylesheet">
     <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link type="text/css" href="https://fengyuanchen.github.io/cropperjs/css/cropper.css" rel="stylesheet">
 
     <script>
       window.Laravel = {!! json_encode(['csrfToken' => csrf_token()]) !!};

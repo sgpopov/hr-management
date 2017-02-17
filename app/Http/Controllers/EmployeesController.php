@@ -7,10 +7,32 @@ use App\Employee;
 use App\Employees\Filters as EmployeesFilters;
 use App\Http\Requests\EmployeeRequest;
 use App\Team;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class EmployeesController extends Controller
 {
+    /**
+     * Paginate employees list.
+     *
+     * @var int
+     */
     protected $paginate = 20;
+
+    /**
+     * Employees pictures path.
+     *
+     * @var string
+     */
+    protected $picturesPath = 'public/employees/pictures/';
+
+    /**
+     * Employees thumbnail pictures path.
+     *
+     * @var string
+     */
+    protected $thumbPicturesPath = 'public/employees/pictures/thumbs/';
 
     /**
      * Display all employees.
@@ -87,7 +109,11 @@ class EmployeesController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
-        Employee::create($request->all());
+        $employee = Employee::create($request->except('picture'));
+
+        if ($request->has('picture')) {
+            $this->setPicture($employee, $request->picture);
+        }
 
         return redirect()
             ->route('employees.index')
@@ -130,12 +156,72 @@ class EmployeesController extends Controller
      */
     public function update(EmployeeRequest $request, Employee $employee)
     {
-        $employee->update($request->all());
+        $employee->update($request->except('picture'));
         $employee->passport()->update($request->get('passport'));
+
+        if ($request->has('picture')) {
+            $this->removePicture($employee);
+            $this->setPicture($employee, $request->picture);
+        }
 
         return redirect()
             ->route('employees.index')
             ->with('status', 'Employee updated!');
+    }
+
+    /**
+     * Set employee's picture.
+     *
+     * @param Employee $employee
+     * @param string $picture
+     *
+     * @return void
+     */
+    protected function setPicture(Employee $employee, string $picture)
+    {
+        // Set the filename using the following format: {id}-{fullname}.png
+        //
+        // For example:
+        //
+        // ID = 3, Fullname = Mr. Myron Moen;
+        // File --> 3-mr-myron-moen.jpg
+        $filename = sprintf(
+            '%d-%s.%s',
+            $employee->id, Str::slug($employee->fullname), 'png'
+        );
+
+        // Store the original file to the storage.
+        $image = Image::make($picture);
+
+        Storage::put($this->picturesPath . $filename, $image->stream());
+
+        // Create thumbnail with the with of 56 and constrain aspect ratio (auto height)
+        // and save to the storage.
+        $thumb = Image::make($picture)->resize(56, null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize(); // prevent possible upsizing
+        });
+
+        Storage::put($this->thumbPicturesPath . $filename, $thumb->stream());
+
+        $employee->update(['picture' => $filename]);
+    }
+
+    /**
+     * Removes employee picture if they have one.
+     *
+     * @param Employee $employee
+     *
+     * @return void
+     */
+    protected function removePicture(Employee $employee)
+    {
+        if (empty($employee->picture)) {
+            return;
+        }
+
+        Storage::delete($this->picturesPath . $employee->picture);
+        Storage::delete($this->thumbPicturesPath . $employee->picture);
     }
 
     /**

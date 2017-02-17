@@ -34,5 +34,29 @@
                 </li>
             </ul>
         </li>
+        <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button" href="javascript:;">
+                <i class="sidebar-menu-icon material-icons">description</i>
+                Documents
+            </a>
+
+            <ul class="sidebar-submenu">
+                <li class="sidebar-menu-item {{ Request::is('employees*') ? 'active' : '' }}">
+                    <a class="sidebar-menu-button" href="{{ route('employees.index') }}">
+                        Filled documents
+                    </a>
+                </li>
+                <li class="sidebar-menu-item {{ Request::is('departments*') ? 'active' : '' }}">
+                    <a class="sidebar-menu-button" href="{{ route('departments.index') }}">
+                        Templates
+                    </a>
+                </li>
+                <li class="sidebar-menu-item {{ Request::is('teams*') ? 'active' : '' }}">
+                    <a class="sidebar-menu-button" href="{{ route('teams.index') }}">
+                        Keywords
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>

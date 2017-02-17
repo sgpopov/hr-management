@@ -201,6 +201,36 @@
         </div>
     </div>
 
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Picture</h4>
+        </div>
+        <div class="card-block">
+            <div class="media">
+                <div class="media-left">
+                    <div class="icon-block rounded">
+                        @if($employee->picture)
+                            <a href="{{ asset('storage/employees/pictures/' . $employee->picture) }}" target="_blank">
+                                <img src="{{ asset('storage/employees/pictures/thumbs/' . $employee->picture) }}" alt="{{ $employee->fullname }}">
+                            </a>
+                        @endif
+                    </div>
+                </div>
+                <div class="media-body media-middle">
+                    <div class="form-group row {{ $errors->has('picture') ? 'has-danger' : '' }}">
+                        <div class="col-sm-10">
+                            <picture-upload></picture-upload>
+                        </div>
+
+                        @if ($errors->has('picture'))
+                            <small class="text-help">{{ $errors->first('picture') }}</small>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="form-group row m-b-0">
         <div class="col-sm-9">
             <button type="submit" class="btn btn-primary">{{ isset($employee->id) ? 'Update' : 'Submit' }}</button>

@@ -66,11 +66,11 @@
                                 <label for="picture" class="col-sm-3 form-control-label">Picture</label>
                             </div>
                             <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label class="picture">
+                                <div class="form-group"><label class="picture">
                                         <input type="file" name="picture" id="picture" />
                                         <span class="file-custom"></span>
                                     </label>
+
                                 </div>
                             </div>
                         </div>

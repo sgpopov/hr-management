@@ -21,6 +21,7 @@ class EmployeeRequest extends FormRequest
         'passport.issue_date' => 'required|date|before:tomorrow',
         'passport.valid_until' => 'required|date|after:today',
         'passport.address' => 'required',
+        'picture' => 'sometimes|base64Image'
     ];
 
     /**
