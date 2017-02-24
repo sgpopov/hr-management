@@ -19833,6 +19833,7 @@ Vue.prototype.$http = axios;
 
 Vue.component('datetime-picker', __webpack_require__(44));
 Vue.component('picture-upload', __webpack_require__(45));
+Vue.component('ckeditor', __webpack_require__(63));
 
 Vue.component('users-list', __webpack_require__(49));
 Vue.component('roles-list', __webpack_require__(48));
@@ -44352,6 +44353,149 @@ module.exports = function(module) {
 __webpack_require__(13);
 module.exports = __webpack_require__(14);
 
+
+/***/ }),
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    props: {
+        id: {
+            type: String,
+            default: 'editor',
+            required: true
+        },
+        name: {
+            type: String,
+            default: 'editor',
+            required: true
+        },
+        value: {
+            type: String
+        },
+        height: {
+            type: String,
+            default: '500px'
+        },
+        toolbar: {
+            // Define the toolbar: http://docs.ckeditor.com/#!/guide/dev_toolbar
+            type: Array,
+            default: function _default() {
+                return [{ name: 'clipboard', items: ['Undo', 'Redo'] }, { name: 'styles', items: ['Format', 'Font', 'FontSize'] }, { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'] }, { name: 'basicstyles', items: ['CopyFormatting', 'RemoveFormat'] }, { name: 'colors', items: ['TextColor', 'BGColor'] }, { name: 'align', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] }, { name: 'links', items: ['Link', 'Unlink'] }, { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'] }, { name: 'insert', items: ['Image', 'Table'] }, { name: 'tools', items: ['Maximize'] }, { name: 'editing', items: ['Scayt'] }, { name: 'document', groups: ['mode', 'document'], items: ['Source', '-', 'Print'] }];
+            }
+        },
+        language: {
+            type: String,
+            default: 'en'
+        },
+        extraplugins: {
+            type: String,
+            default: ''
+        }
+    },
+
+    mounted: function mounted() {
+        var _this = this;
+
+        var editorId = this.id;
+        var editorConfig = {
+            toolbar: this.toolbar,
+            language: this.language,
+            height: this.height,
+            extraPlugins: this.extraplugins
+        };
+
+        CKEDITOR.replace(editorId, editorConfig);
+        CKEDITOR.instances[editorId].setData(this.value);
+        CKEDITOR.instances[editorId].on('change', function () {
+            return _this.updateElement(editorId);
+        });
+    },
+
+
+    methods: {
+        updateElement: function updateElement(editorId) {
+            if (CKEDITOR.instances[editorId]) {
+
+                CKEDITOR.instances[editorId].updateElement();
+            }
+        },
+        destroyed: function destroyed() {
+            var ckeditorId = this.id;
+
+            if (CKEDITOR.instances[ckeditorId]) {
+                CKEDITOR.instances[ckeditorId].destroy();
+            }
+        }
+    }
+};
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(62),
+  /* template */
+  __webpack_require__(64),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\xampp\\htdocs\\hr-management\\resources\\assets\\js\\components\\common\\ckeditor.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ckeditor.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3c69437b", Component.options)
+  } else {
+    hotAPI.reload("data-v-3c69437b", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('textarea', {
+    attrs: {
+      "id": _vm.id,
+      "name": _vm.name
+    },
+    domProps: {
+      "value": _vm.value
+    }
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3c69437b", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

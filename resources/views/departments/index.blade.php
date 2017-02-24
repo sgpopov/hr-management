@@ -34,6 +34,16 @@
                             </div>
                         </div>
                         <div class="media-right center">
+                            <a href="{{ route('employees.view', $department->manager->id) }}" class="nav-link active p-a-0">
+                                @if (!empty($department->manager->picture))
+                                <img src="/storage/employees/pictures/thumbs/{{ $department->manager->picture }}" alt="Avatar" class="img-circle" width="40" />
+                                @else
+                                    <img src="/storage/images/avatar.png" alt="Avatar" class="img-circle" width="40" />
+                                @endif
+                            </a>
+                            <span class="text-muted-light">manager</span>
+                        </div>
+                        <div class="media-right center">
                             <h2 class="m-b-0">{{ $department->teams()->count() }}</h2>
                             <span class="text-muted-light">teams</span>
                         </div>

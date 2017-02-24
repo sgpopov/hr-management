@@ -26,6 +26,11 @@
     <div class="layout-content" id="app" data-scrollable>
         <div class="container-fluid">
             @yield('breadcrumb')
+
+            @if (session('status'))
+                @include('partials.alert-success', [ 'message' => session('status') ])
+            @endif
+
             @yield('content')
         </div>
     </div>
@@ -34,6 +39,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

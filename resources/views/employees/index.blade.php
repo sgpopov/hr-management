@@ -36,7 +36,7 @@
                     <div class="media">
                         <div class="media-body media-middle">
                             <div class="m-b-1">
-                                <a href="{{ route('employees.edit', $employee->id) }}">{{ $employee->fullname }}</a>
+                                <a href="{{ route('employees.view', $employee->id) }}">{{ $employee->fullname }}</a>
                             </div>
                             <div class="m-b-1">
                                 {{ $employee->email }}

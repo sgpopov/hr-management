@@ -54,6 +54,16 @@ Route::group(['prefix' => 'employees', 'middleware' => ['auth', 'has-access-righ
     Route::get('/', 'EmployeesController@index')->name('employees.index');
     Route::get('/create', 'EmployeesController@create')->name('employees.create');
     Route::post('/', 'EmployeesController@store')->name('employees.store');
+    Route::get('/{employee}', 'EmployeesController@show')->name('employees.view');
     Route::get('/{employee}/edit', 'EmployeesController@edit')->name('employees.edit');
     Route::patch('/{employee}', 'EmployeesController@update')->name('employees.update');
+});
+
+Route::group(['prefix' => 'documents/templates', 'middleware' => ['auth', 'has-access-rights']], function () {
+    Route::get('/', 'DocumentTemplateController@index')->name('documentTemplates.index');
+    Route::get('/create', 'DocumentTemplateController@create')->name('documentTemplates.create');
+    Route::post('/', 'DocumentTemplateController@store')->name('documentTemplates.store');
+    Route::get('/{template}', 'DocumentTemplateController@show')->name('documentTemplates.show');
+    Route::get('/{template}/edit', 'DocumentTemplateController@edit')->name('documentTemplates.edit');
+    Route::patch('/{template}', 'DocumentTemplateController@update')->name('documentTemplates.update');
 });
