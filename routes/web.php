@@ -67,3 +67,11 @@ Route::group(['prefix' => 'documents/templates', 'middleware' => ['auth', 'has-a
     Route::get('/{template}/edit', 'DocumentTemplateController@edit')->name('documentTemplates.edit');
     Route::patch('/{template}', 'DocumentTemplateController@update')->name('documentTemplates.update');
 });
+
+Route::group(['prefix' => 'documents/keywords', 'middleware' => ['auth', 'has-access-rights']], function () {
+    Route::get('/', 'DocumentsKeywordsController@index')->name('documentsKeywords.index');
+    Route::get('/create', 'DocumentsKeywordsController@create')->name('documentsKeywords.create');
+    Route::post('/', 'DocumentsKeywordsController@store')->name('documentsKeywords.store');
+    Route::get('/{keyword}/edit', 'DocumentsKeywordsController@edit')->name('documentsKeywords.edit');
+    Route::patch('/{keyword}', 'DocumentsKeywordsController@update')->name('documentsKeywords.update');
+});

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EmployeesTableSeeder::class);
         $this->call(DepartmentsTableSeeder::class);
         $this->call(TeamsTableSeeder::class);
+        $this->call(DocumentsKeywordsTableSeeder::class);
         $this->call(DocumentTempltesTableSeeder::class);
 
         Schema::enableForeignKeyConstraints();

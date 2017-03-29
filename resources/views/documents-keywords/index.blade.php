@@ -4,7 +4,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ url('/') }}">Documents</a></li>
-        <li class="active">Templates</li>
+        <li class="active">Keywords</li>
     </ol>
 @endsection
 
@@ -13,8 +13,8 @@
         <div class="card-header">
             <div class="media">
                 <div class="media-body">
-                    <h4 class="card-title">Templates</h4>
-                    <p class="card-subtitle">{{ $templates->count() }} total</p>
+                    <h4 class="card-title">Keywords</h4>
+                    <p class="card-subtitle">{{ $keywords->count() }} total</p>
                 </div>
                 <div class="media-right media-middle">
                     <a href="{{ route('documentTemplates.create') }}" class="btn btn-rounded-deep btn-success-outline">
@@ -26,18 +26,18 @@
         </div>
 
         <ul class="list-group list-group-fit m-b-0">
-            @foreach($templates as $template)
+            @foreach($keywords as $keyword)
                 <li class="list-group-item">
                     <div class="media">
                         <div class="media-body media-middle">
                             <div>
-                                <a href="{{ route('documentTemplates.show', $template->id) }}">{{ $template->title }}</a>
+                                <a href="{{ route('documentsKeywords.edit', $keyword->id) }}">
+                                    <span class="label label-default m-b-1">{{ $keyword->keyword }}</span>
+                                </a>
                             </div>
-                        </div>
-                        <div class="media-right">
-                            <a href="{{ route('documentTemplates.edit', $template->id) }}" class="btn btn-white btn-sm">
-                                <i class="material-icons md-18">edit</i>
-                            </a>
+                            <div class="text-muted">
+                                {{ $keyword->description }}
+                            </div>
                         </div>
                     </div>
                 </li>

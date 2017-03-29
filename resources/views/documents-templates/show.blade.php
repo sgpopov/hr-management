@@ -4,7 +4,8 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ url('/') }}">Documents</a></li>
-        <li class="active">Templates</li>
+        <li><a href="{{ route('documentTemplates.index') }}">Templates</a></li>
+        <li class="active">{{ $template->title }}</li>
     </ol>
 @endsection
 
