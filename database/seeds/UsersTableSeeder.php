@@ -20,21 +20,21 @@ class UsersTableSeeder extends Seeder
         $user = new User();
         $user->name = 'Svilen Popov';
         $user->email = 'demo@example.com';
-        $user->password = bcrypt('svil4ok');
+        $user->password = Hash::make('svil4ok');
         $user->save();
         $user->assignRole($roleAdmin);
 
         $user = new User();
         $user->name = 'Scott';
         $user->email = 'scott@example.com';
-        $user->password = bcrypt('scott');
+        $user->password = Hash::make('scott');
         $user->save();
         $user->assignRole($roleManager);
 
         $user = new User();
         $user->name = 'Jeffrey';
         $user->email = 'jeffrey@example.com';
-        $user->password = bcrypt('jeffrey');
+        $user->password = Hash::make('jeffrey');
         $user->save();
         $user->assignRole($roleEmployee);
     }
