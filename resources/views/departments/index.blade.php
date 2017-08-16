@@ -38,7 +38,7 @@
                                 @if (!empty($department->manager->picture))
                                 <img src="/storage/employees/pictures/thumbs/{{ $department->manager->picture }}" alt="Avatar" class="img-circle" width="40" />
                                 @else
-                                    <img src="/storage/images/avatar.png" alt="Avatar" class="img-circle" width="40" />
+                                    <img src="/images/avatar.png" alt="Avatar" class="img-circle" width="40" />
                                 @endif
                             </a>
                             <span class="text-muted-light">manager</span>
