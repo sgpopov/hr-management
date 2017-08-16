@@ -1,10 +1,7 @@
 @extends('layouts/app')
 
 @section('breadcrumb')
-    <ol class="breadcrumb">
-        <li><a href="{{ url('/') }}">AdminPlus</a></li>
-        <li class="active">Fixed layout</li>
-    </ol>
+    {!! Breadcrumbs::render('home') !!}
 @endsection
 
 @section('content')

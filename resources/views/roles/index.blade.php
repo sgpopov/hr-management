@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
 @section('breadcrumb')
-    <ol class="breadcrumb">
-        <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li class="active">Roles</li>
-    </ol>
+    {!! Breadcrumbs::render('users-roles.index') !!}
 @endsection
 
 @section('content')

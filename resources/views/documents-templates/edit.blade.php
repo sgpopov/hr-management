@@ -1,12 +1,7 @@
 @extends('layouts.app')
 
 @section('breadcrumb')
-    <ol class="breadcrumb">
-        <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li><a href="{{ url('/documents') }}">Documents</a></li>
-        <li><a href="{{ route('documentTemplates.index') }}">Templates</a></li>
-        <li class="active">Edit template</li>
-    </ol>
+    {!! Breadcrumbs::render('document-templates.edit') !!}
 @endsection
 
 @section('content')
