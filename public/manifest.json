@@ -1,4 +1,3 @@
 {
-  "app.css": "\\css\\login.css",
-  "app.js": "\\js\\app.js"
+  "app.js": "/js/app.js"
 }

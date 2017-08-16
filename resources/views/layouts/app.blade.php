@@ -19,12 +19,15 @@
       window.Laravel = {!! json_encode(['csrfToken' => csrf_token()]) !!};
     </script>
 </head>
-<body class="layout-container ls-top-navbar layout-sidebar-l3-md-up">
-    @include('includes.nav')
-    @include('includes.sidebar')
+<body>
 
-    <div class="layout-content" id="app" data-scrollable>
-        <div class="container-fluid">
+@include('includes.nav')
+
+<div class="container-fluid">
+    <div class="row">
+        @include('includes.sidebar')
+
+        <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
             @yield('breadcrumb')
 
             @if (session('status'))
@@ -32,14 +35,8 @@
             @endif
 
             @yield('content')
-        </div>
+        </main>
     </div>
-
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-    <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+</div>
 </body>
 </html>

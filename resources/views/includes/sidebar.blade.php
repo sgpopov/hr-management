@@ -1,62 +1,62 @@
-<div class="sidebar sidebar-left sidebar-visible-md-up sidebar-size-3 sidebar-dark bg-primary" id="sidebar" data-scrollable>
-    <a href="{{ url('/') }}" class="sidebar-brand sidebar-brand-bg sidebar-brand-border m-b-0">
-        Dashboard
-    </a>
-
-    <ul class="sidebar-menu sm-active-button-bg">
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="{{ url('/') }}">
-                <i class="sidebar-menu-icon material-icons">home</i>
-                Home
+<nav class="col-sm-3 col-md-2 d-none d-sm-block sidebar">
+    <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+            <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
+                <i class="sidebar-menu-icon material-icons">dashboard</i>
+                Dashboard
             </a>
         </li>
-        <li class="sidebar-menu-item open">
-            <a class="sidebar-menu-button" href="javascript:;">
-                <i class="sidebar-menu-icon material-icons">business</i>
-                Organization
+        <li class="nav-item">
+            <a href="{{ route('employees.index') }}" class="nav-link {{ Request::is('employees*') ? 'active' : '' }}">
+                <i class="sidebar-menu-icon material-icons">people</i>
+                Employees
             </a>
-
-            <ul class="sidebar-submenu">
-                <li class="sidebar-menu-item {{ Request::is('employees*') ? 'active' : '' }}">
-                    <a class="sidebar-menu-button" href="{{ route('employees.index') }}">
-                        Employees
-                    </a>
-                </li>
-                <li class="sidebar-menu-item {{ Request::is('departments*') ? 'active' : '' }}">
-                    <a class="sidebar-menu-button" href="{{ route('departments.index') }}">
-                        Departments
-                    </a>
-                </li>
-                <li class="sidebar-menu-item {{ Request::is('teams*') ? 'active' : '' }}">
-                    <a class="sidebar-menu-button" href="{{ route('teams.index') }}">
-                        Teams
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="javascript:;">
-                <i class="sidebar-menu-icon material-icons">description</i>
-                Documents
-            </a>
-
-            <ul class="sidebar-submenu">
-                <li class="sidebar-menu-item {{ Request::is('employees*') ? 'active' : '' }}">
-                    <a class="sidebar-menu-button" href="{{ route('employees.index') }}">
-                        Filled documents
-                    </a>
-                </li>
-                <li class="sidebar-menu-item {{ Request::is('departments*') ? 'active' : '' }}">
-                    <a class="sidebar-menu-button" href="{{ route('departments.index') }}">
-                        Templates
-                    </a>
-                </li>
-                <li class="sidebar-menu-item {{ Request::is('teams*') ? 'active' : '' }}">
-                    <a class="sidebar-menu-button" href="{{ route('teams.index') }}">
-                        Keywords
-                    </a>
-                </li>
-            </ul>
         </li>
     </ul>
-</div>
+
+    <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-inactive">
+                Organization
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('departments.index') }}" class="nav-link {{ Request::is('departments*') ? 'active' : '' }}">
+                <i class="sidebar-menu-icon material-icons">business</i>
+                Departments
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('teams.index') }}" class="nav-link {{ Request::is('teams*') ? 'active' : '' }}">
+                <i class="sidebar-menu-icon material-icons">business</i>
+                Teams
+            </a>
+        </li>
+    </ul>
+
+    <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-inactive">
+                Documents
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="" class="nav-link">
+                <i class="sidebar-menu-icon material-icons">assignment_turned_in</i>
+                Filled documents
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('documentTemplates.index') }}" class="nav-link {{ Request::is('documents/templates*') ? 'active' : '' }}">
+                <i class="sidebar-menu-icon material-icons">description</i>
+                Templates
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="" class="nav-link">
+                <i class="sidebar-menu-icon material-icons">format_color_text</i>
+                Keywords
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -1,11 +1,22 @@
-// Variables
-@import './variables';
+@import "node_modules/bootstrap/scss/bootstrap";
 
-// AdminPlus Lite
-@import './../vendor/admin-plus/style';
+body {
+  padding-top: 3.5rem;
+}
 
-// Bootstrap Layout
-@import './../vendor/bootstrap-layout/src/sass/style';
+h1 {
+  margin-bottom: 20px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #eee;
+}
 
-// Bootstrap Layout Scrollable
-@import './../vendor/bootstrap-layout-scrollable/src/sass/style';
+@import "components/sidebar";
+
+.placeholders {
+  padding-bottom: 3rem;
+
+  img {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}

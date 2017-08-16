@@ -7,21 +7,17 @@
     "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "axios": "^0.15.2",
-    "laravel-mix": "^0.4.0",
+    "axios": "^0.16.2",
+    "bootstrap": "^4.0.0-beta",
+    "cross-env": "^5.0.5",
+    "laravel-mix": "^1.4.2",
     "lodash": "^4.16.2",
-    "vue": "^2.0.1"
+    "vue": "^2.4.2"
   },
   "dependencies": {
-    "adminplus": "^1.0.0-alpha.12",
-    "bootstrap": "^4.0.0-alpha.2",
-    "bootstrap-layout": "^1.0.0-alpha.10",
-    "bootstrap-layout-scrollable": "^1.1.0",
-    "sass-md-colors": "^1.0.0",
-    "simplebar": "^2.0.3",
-    "tether": "^1.4.0",
-    "vue-cropperjs": "^2.0.3",
-    "vue-sweetalert": "^0.1.16",
-    "vuejs-datepicker": "^0.6.2"
+    "jquery": "^3.2.1",
+    "vue-cropperjs": "^2.1.1",
+    "vue-sweetalert": "^0.1.18",
+    "vuejs-datepicker": "^0.9.7"
   }
 }

@@ -1,0 +1,54 @@
+.sidebar {
+  position: fixed;
+  top: 51px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: 1px solid #eee;
+  background-color: #039be5;
+  color: #fff;
+
+  .nav {
+    margin-bottom: 20px;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-item + .nav-item {
+    margin-left: 0;
+  }
+
+  .nav-link {
+    border-radius: 0;
+    color: #fff;
+
+    &.active, &:hover {
+      background: rgba(255,255,255,.12);
+    }
+  }
+
+  .nav-inactive {
+
+    &:hover {
+      background: inherit;
+    }
+  }
+}
+
+.sidebar-menu-icon {
+  vertical-align: middle;
+  width: 32px;
+  font-size: 24px;
+  display: inline-block;
+  line-height: normal;
+  position: relative;
+
+  &.material-icons {
+    top: -1px;
+  }
+}
