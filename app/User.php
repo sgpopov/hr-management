@@ -123,7 +123,7 @@ class User extends Authenticatable
     public function getPicture()
     {
         if (empty($this->picture)) {
-            return Storage::url('images/avatar.png');
+            return '/images/avatar.png';
         }
 
         return Storage::url('images/users/' . $this->picture);
