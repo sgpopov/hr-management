@@ -43,4 +43,26 @@ class Employee extends Model
     {
         return $this->hasOne(EmployeeId::class);
     }
+
+    /**
+     * Check if employee has a picture.
+     *
+     * @return bool
+     */
+    public function hasPicture()
+    {
+        return !! $this->picture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPicture()
+    {
+        if (empty($this->picture)) {
+            return '/images/avatar.png';
+        }
+
+        return Storage::url('images/employees/' . $this->picture);
+    }
 }

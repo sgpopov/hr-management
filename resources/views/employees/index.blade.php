@@ -15,9 +15,9 @@
                     </p>
                 </div>
                 <div class="media-right media-middle">
-                    <a href="{{ route('employees.create') }}" class="btn btn-rounded-deep btn-success-outline">
+                    <a href="{{ route('employees.create') }}" class="btn btn-outline-success">
                         <i class="material-icons">add</i>
-                        <span class="icon-text">Add</span>
+                        <span class="icon-text">Add employee</span>
                     </a>
                 </div>
             </div>
@@ -27,10 +27,11 @@
             @include('employees.partials.filters-form')
         </div>
 
-        <ul class="list-group list-group-fit m-b-0">
+        <ul class="list-group list-group-flush">
             @foreach($employees as $employee)
                 <li class="list-group-item">
                     <div class="media">
+                        <img class="d-flex mr-3 mt-1 rounded" src="{{ $employee->getPicture() }}" style="max-width: 32px" />
                         <div class="media-body media-middle">
                             <div class="m-b-1">
                                 <a href="{{ route('employees.view', $employee->id) }}">{{ $employee->fullname }}</a>
@@ -49,7 +50,7 @@
             @endforeach
         </ul>
 
-        <div class="card-footer card-pagination align-middle">
+        <div class="card-footer card-pagination d-flex justify-content-between align-items-center">
             <span>
                 Showing {{ $employees->firstItem() }} to {{ $employees->lastItem() }} of {{ $employees->total() }} employees.
             </span>
