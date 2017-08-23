@@ -10,11 +10,7 @@
         <div class="col-md-2">
             <div class="card">
                 <div class="card-header center">
-                    @if (!empty($employee->picture))
-                        <img src="/storage/employees/pictures/thumbs/{{ $employee->picture }}" alt="Avatar" class="img-circle" width="80" />
-                    @else
-                        <img src="/storage/images/avatar.png" alt="Avatar" class="img-circle" width="80" />
-                    @endif
+                    <img src="{{ $employee->getPicture() }}" alt="Avatar" class="img-circle" width="80" />
                 </div>
 
                 <ul class="list-group list-group-fit mb-0">
