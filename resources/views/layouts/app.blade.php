@@ -20,22 +20,23 @@
     </script>
 </head>
 <body>
+<div id="app">
+    @include('includes.nav')
 
-@include('includes.nav')
+    <div class="container-fluid">
+        <div class="row">
+            @include('includes.sidebar')
 
-<div class="container-fluid">
-    <div class="row">
-        @include('includes.sidebar')
+            <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+                @yield('breadcrumb')
 
-        <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-            @yield('breadcrumb')
+                @if (session('status'))
+                    @include('partials.alert-success', [ 'message' => session('status') ])
+                @endif
 
-            @if (session('status'))
-                @include('partials.alert-success', [ 'message' => session('status') ])
-            @endif
-
-            @yield('content')
-        </main>
+                @yield('content')
+            </main>
+        </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
