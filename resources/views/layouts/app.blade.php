@@ -43,6 +43,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="//cdn.ckeditor.com/4.7.2/standard/ckeditor.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

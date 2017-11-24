@@ -42,6 +42,27 @@ Breadcrumbs::register('departments.edit', function ($breadcrumbs) {
     $breadcrumbs->push('Update department');
 });
 
+// Documents
+Breadcrumbs::register('documents.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Documents', route('documents.index'));
+});
+
+Breadcrumbs::register('documents.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('documents.index');
+    $breadcrumbs->push('Create new document');
+});
+
+Breadcrumbs::register('documents.view', function ($breadcrumbs, $document) {
+    $breadcrumbs->parent('documents.index');
+    $breadcrumbs->push($document->title);
+});
+
+Breadcrumbs::register('documents.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('documents.index');
+    $breadcrumbs->push('Edit document');
+});
+
 // Documents' templates
 Breadcrumbs::register('document-templates.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');

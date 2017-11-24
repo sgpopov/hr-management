@@ -65,4 +65,15 @@ class Employee extends Model
 
         return Storage::url('images/employees/' . $this->picture);
     }
+
+    /**
+     * Scope a query to only include active users.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCurrent($query)
+    {
+        return $query->whereNull('deleted_at');
+    }
 }

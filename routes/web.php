@@ -59,6 +59,15 @@ Route::group(['prefix' => 'employees', 'middleware' => ['auth', 'has-access-righ
     Route::patch('/{employee}', 'EmployeesController@update')->name('employees.update');
 });
 
+Route::group(['prefix' => 'documents', 'middleware' => ['auth', 'has-access-rights']], function () {
+    Route::get('/', 'DocumentsController@index')->name('documents.index');
+    Route::get('/create', 'DocumentsController@create')->name('documents.create');
+    Route::post('/', 'DocumentsController@store')->name('documents.store');
+    Route::get('/{document}', 'DocumentsController@show')->name('documents.show');
+    Route::get('/{document}/edit', 'DocumentsController@edit')->name('documents.edit');
+    Route::patch('/{document}', 'DocumentsController@update')->name('documents.update');
+});
+
 Route::group(['prefix' => 'documents/templates', 'middleware' => ['auth', 'has-access-rights']], function () {
     Route::get('/', 'DocumentTemplateController@index')->name('documentTemplates.index');
     Route::get('/create', 'DocumentTemplateController@create')->name('documentTemplates.create');
